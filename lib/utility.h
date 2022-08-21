@@ -26,12 +26,13 @@ enum Colors
 enum Options
 {
     EXIT        = 0,
-    SUM         = 1, 
-    SUBT        = 2, 
-    PROD        = 3, 
-    DETER       = 4, 
-    DOT_PROD    = 5,
-    REINPUT     = 6
+    SUM,
+    SUBT1,
+    SUBT2,
+    PROD1,
+    PROD2,
+    DOT_PROD,
+    REINPUT     
 };
 
 bool validarInt(string str){
@@ -40,6 +41,38 @@ bool validarInt(string str){
             return false;
     return true;
 }
+
+bool validarNum(string cadena) {
+    int longitud = cadena.length();
+    // Quitar espacios, saltos de línea, etcétera
+    while (longitud > 0 && isspace(cadena[longitud - 1]))
+        longitud--;
+    if (longitud <= 0) return 0;
+    int i;
+    int haEncontradoElPunto = 0;
+    for (i = 0; i < longitud; ++i) {
+        // En caso de que sea un guión, y que no esté al inicio, no es válido
+        if (cadena[i] == '-' && i > 0) {
+            return 0;
+        }
+        // El punto solo puede aparecer una vez
+        if (cadena[i] == '.') {
+            // Si ya lo ha encontrado antes, entonces no es válido
+            if (haEncontradoElPunto) {
+                return 0;
+            } else {
+
+                haEncontradoElPunto = 1;
+            }
+        }
+        // Si no es dígito, tampoco es válido
+        if (!isdigit(cadena[i]) && cadena[i] != '-' && cadena[i] != '.') {
+            return 0;
+        }
+    }
+    return 1;
+}
+
 void gotoxy(int x, int y) 
 { 
 HANDLE h=GetStdHandle(STD_OUTPUT_HANDLE); 
