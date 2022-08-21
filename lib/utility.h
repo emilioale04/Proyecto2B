@@ -91,30 +91,9 @@ void showcursor(bool cursor)
    SetConsoleCursorInfo(consoleHandle, &info);
 }
 
-void setColor(int Background, int Text)
+void setTextColor(int Text)
 { 
-    int colorTexto= Text + (Background * 16);         // los colores van del 0 al 255 por eso se multiplica por 16
+    int colorTexto= Text;         // los colores van del 0 al 255 por eso se multiplica por 16
     HANDLE terminal = GetStdHandle(STD_OUTPUT_HANDLE);   // referenciamos a la consola.
     SetConsoleTextAttribute(terminal, colorTexto); 
-}
-
-void progressbar(int length, int delay, char simb)
-{
-    for (int i=0; i<=100; i++){
-        
-        int perc=i*length/100;
-
-        cout<<'\r';
-
-        for (int j=0; j<length; j++){
-           
-           cout<<((j<=perc)? simb : ' ');
-            
-        }
-
-        cout<<' '<<i<<'%';
-
-        Sleep(delay);
-    }
-    
 }
