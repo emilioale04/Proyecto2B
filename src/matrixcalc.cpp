@@ -38,36 +38,12 @@ float C[LIM][LIM];
 int main()
 {
 	system("cls");
-	cout.precision(4); //4 decimals
-	ingresar:
+	cout.precision(3); //3 decimals
+	
+	load:
 	system("cls");
 	header();
 	initMatrix();
-
-	setTextColor(LCYAN);
-	cout<<"\tIngrese los valores de las matrices: "<<endl<<endl;
-
-	for (int i = 0; i<m1; i++)
-		for (int j = 0; j<n1; j++)
-		{
-			A[i][j] = getMatrixNum("A", i, j);
-		}
-
-	cout<<endl;
-
-	for (int i = 0; i<m2; i++)
-		for (int j = 0; j<n2; j++)
-		{
-			B[i][j] = getMatrixNum("B", i, j);
-		}
-
-	cout<<"A  = "<<'\t';
-	showMatrix(A,m1,n1);
-
-	cout<<endl;
-
-	cout<<"B  = "<<'\t';
-	showMatrix(B,m2,n2);
 	
 	do
 	{
@@ -144,7 +120,7 @@ int main()
 
 			case REINPUT:
 				system("cls");
-				goto ingresar;
+				goto load;
 				break;
 
 			case EXIT:
@@ -259,6 +235,23 @@ void initMatrix()
 	n2 = getPositiveInt("Columnas de B: ", input, LIM);
 
 	cout<<endl<<endl;
+
+	setTextColor(LCYAN);
+	cout<<"\tIngrese los valores de las matrices: "<<endl<<endl;
+
+	for (int i = 0; i<m1; i++)
+		for (int j = 0; j<n1; j++)
+		{
+			A[i][j] = getMatrixNum("A", i, j);
+		}
+
+	cout<<endl;
+
+	for (int i = 0; i<m2; i++)
+		for (int j = 0; j<n2; j++)
+		{
+			B[i][j] = getMatrixNum("B", i, j);
+		}
 }
 
 /*
@@ -273,7 +266,7 @@ void showMatrix(float M[][LIM], int m, int n)
 	for (int i = 0; i<m; i++){
 			for (int j = 0; j<n; j++)
 			{
-				cout<<M[i][j]<<"\t";
+				cout<<M[i][j]<<"\t\t";
 			}
 			cout<<endl<<"\t\t";
 		}
