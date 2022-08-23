@@ -2,7 +2,7 @@
 
 Calculadora de matrices en C++.
 
-Incluye suma, resta y multiplicacion de matrices, producto interno usual y determinante. 
+Incluye suma, resta y multiplicacion de matrices y producto interno usual. 
 
 Proyecto del segundo bimestre.
 
@@ -12,5 +12,5 @@ Proyecto del segundo bimestre.
 - Emilio Armas (emilio.armas@epn.edu.ec)
 
 ## GitHub
-[Documentation](https://github.com/emilioale04/Proyecto1B.git)
+[GitHub](https://github.com/emilioale04/Proyecto2B.git)
 
