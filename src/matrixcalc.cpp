@@ -17,8 +17,6 @@ void header();
 void headerMatrix();
 void initMatrix();
 int menu();
-float inputA(int i, int j);
-float inputB(int i, int j);
 void showMatrix(float M[][5], int m, int n);
 void sum();
 void subt1();
@@ -27,7 +25,7 @@ void prod1();
 void prod2();
 void dotProd();
 
-#define LIM 5 
+#define LIM 5 //max order 5x5
 
 int m1, m2, n1, n2;
 
