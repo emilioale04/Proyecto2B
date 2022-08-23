@@ -19,8 +19,7 @@ void initMatrix();
 int menu();
 float inputA(int i, int j);
 float inputB(int i, int j);
-bool checkSqr(int i, int j);
-void showMatrix(float M[][10], int m, int n);
+void showMatrix(float M[][5], int m, int n);
 void sum();
 void subt1();
 void subt2();
@@ -28,16 +27,18 @@ void prod1();
 void prod2();
 void dotProd();
 
+#define LIM 5 
+
 int m1, m2, n1, n2;
 
-float A[10][10];
-float B[10][10];
-float C[10][10];
+float A[LIM][LIM];
+float B[LIM][LIM];
+float C[LIM][LIM];
 
 int main()
 {
 	system("cls");
-	cout.precision(4);
+	cout.precision(4); //4 decimals
 	ingresar:
 	system("cls");
 	header();
@@ -49,7 +50,7 @@ int main()
 	for (int i = 0; i<m1; i++)
 		for (int j = 0; j<n1; j++)
 		{
-			A[i][j] = inputA(i, j);
+			A[i][j] = getMatrixNum("A", i, j);
 		}
 
 	cout<<endl;
@@ -57,7 +58,7 @@ int main()
 	for (int i = 0; i<m2; i++)
 		for (int j = 0; j<n2; j++)
 		{
-			B[i][j] = inputB(i, j);
+			B[i][j] = getMatrixNum("B", i, j);
 		}
 
 	cout<<"A  = "<<'\t';
@@ -151,6 +152,7 @@ int main()
 				header();
 				setTextColor(LGREY);
 				cout<<"\tPresione cualquier tecla para salir..."; getch();
+				system("cls");
 				setTextColor(WHITE);
 				exit(EXIT_SUCCESS);
 				break;
@@ -161,6 +163,10 @@ int main()
 	return 0;
 }
 
+/*
+shows options
+@return option
+*/
 int menu()
 {
 	string in;
@@ -205,11 +211,12 @@ void header()
 		<<"\t|    > Selecciona la opcion de que desees.                       |"<<endl
 		<<"\t|    > De ser posible, se realizara la operacion.                |"<<endl
 		<<"\t|    > Se pueden ingresar decimales y numeros negativos.         |"<<endl
-		<<"\t|    > Trabaja con matrices hasta de orden 10x10.                |"<<endl;
+		<<"\t|    > Trabaja con matrices hasta de orden 5x5.                  |"<<endl;
 	setTextColor(LBLUE);
 	cout<<"\t------------------------------------------------------------------"<<endl<<endl;
 }
 
+//shows matrices
 void headerMatrix()
 {
 	setTextColor(LCYAN);
@@ -228,127 +235,39 @@ void headerMatrix()
 
 }
 
+//initialize matrices
 void initMatrix()
 {	
-	string rows, columns;
+	string input, rows,columns;
 	setTextColor(LCYAN);
 	cout<<"\n\tIngrese el numero de filas y columnas de la matriz A:"<<endl;
 	setTextColor(WHITE);
-	cout<<"\tFilas de A: "; getline(cin, rows);
-	
-	if(rows!="" && validarInt(rows))
-		m1 = stoi(rows);
+	cout<<"\tFilas de A: "; getline(cin, input);
+	m1 = getPositiveInt("Filas de A: ", input, LIM);
 
-	while(m1<1 || m1 >10 || !validarInt(rows) || rows == ""){
-		setTextColor(LRED);
-		cout<<"\tOpcion no valida, ingrese un numero valido nuevamente"<<endl;
-		setTextColor(WHITE);
-		cout<<"\tFilas de A: "; getline(cin, rows);
-		if(rows!="" && validarInt(rows))
-			m1 = stoi(rows);
-		fflush(stdin);
-	}
+	cout<<"\tColumnas de A: "; getline(cin, input);
+	n1 = getPositiveInt("Columnas de A: ", input, LIM);
 
-	cout<<"\tColumnas de A: "; getline(cin, columns);
-	
-	if(columns!="" && validarInt(columns))
-		n1 = stoi(columns);
-
-	while(n1<1 || n1 >10 || !validarInt(columns) || columns == ""){
-		setTextColor(LRED);
-		cout<<"\tOpcion no valida, ingrese un numero valido..."<<endl;
-		setTextColor(WHITE);
-		cout<<"\tColumnas de A: "; getline(cin, columns);
-		if(columns!="" && validarInt(columns))
-			n1 = stoi(columns);
-		fflush(stdin);
-	}
-	
 	setTextColor(LCYAN);
 	cout<<"\n\tIngrese el numero de filas y columnas de la matriz B:"<<endl;
 	setTextColor(WHITE);
-	cout<<"\tFilas de B: "; getline(cin, rows);
-	
-	if(rows!="" && validarInt(rows))
-		m2 = stoi(rows);
 
-	while(m2<1 || m2 >10 || !validarInt(rows) || rows == ""){
-		setTextColor(LRED);
-		cout<<"\tOpcion no valida, ingrese un numero valido..."<<endl;
-		setTextColor(WHITE);
-		cout<<"\tFilas de B: "; getline(cin, rows);
-		if(rows!="" && validarInt(rows))
-			m2 = stoi(rows);
-		fflush(stdin);
-	}
+	cout<<"\tFilas de B: "; getline(cin, input);
+	m2 = getPositiveInt("Filas de B: ", input, LIM);
 
-	cout<<"\tColumnas de B: "; getline(cin, columns);
-	
-	if(columns!="" && validarInt(columns))
-		n2 = stoi(columns);
+	cout<<"\tColumnas de B: "; getline(cin, input);
+	n2 = getPositiveInt("Columnas de B: ", input, LIM);
 
-	while(n2<1 || n2 >10 || !validarInt(columns) || columns == ""){
-		setTextColor(LRED);
-		cout<<"\tOpcion no valida, ingrese un numero valido..."<<endl;
-		setTextColor(WHITE);
-		cout<<"\tColumnas de B: "; getline(cin, columns);
-		if(columns!="" && validarInt(columns))
-			n2 = stoi(columns);
-		fflush(stdin);
-	}
 	cout<<endl<<endl;
 }
 
-float inputA(int i, int j){
-	float val;
-	string input;
-	
-	setTextColor(WHITE);
-	cout<<"\tIngrese el numero A["<<i+1<<"]["<<j+1<<"]: ";
-	getline(cin, input);
-
-	if(input!="" && validarNum(input))
-		val = stof(input);
-
-	while(!validarNum(input) || input == ""){
-		setTextColor(LRED);
-		cout<<"\tOpcion no valida, ingrese un numero valido"<<endl;
-		setTextColor(WHITE);
-		cout<<"\tIngrese el numero A["<<i+1<<"]["<<j+1<<"]: "; getline(cin, input);
-		if(input!="" && validarNum(input))
-			val = stof(input);
-		fflush(stdin);
-	}
-
-	return val;
-}
-
-float inputB(int i, int j){
-
-	float val;
-	string input;
-	
-	setTextColor(WHITE);
-	cout<<"\tIngrese el numero B["<<i+1<<"]["<<j+1<<"]: ";
-	getline(cin, input);
-
-	if(input!="" && validarNum(input))
-		val = stof(input);
-
-	while(!validarNum(input) || input == ""){
-		setTextColor(LRED);
-		cout<<"\tOpcion no valida, ingrese un numero valido"<<endl;
-		setTextColor(WHITE);
-		cout<<"\tIngrese el numero B["<<i+1<<"]["<<j+1<<"]: "; getline(cin, input);
-		if(input!="" && validarNum(input))
-			val = stof(input);
-		fflush(stdin);
-	}
-
-	return val;
-}
-
-void showMatrix(float M[][10], int m, int n)
+/*
+shows a matrix
+@param M matrix
+@param m rows
+@param n columns
+*/
+void showMatrix(float M[][LIM], int m, int n)
 {
 	setTextColor(WHITE);
 	for (int i = 0; i<m; i++){
@@ -361,6 +280,7 @@ void showMatrix(float M[][10], int m, int n)
 		cout<<endl;
 }
 
+//sum A + B
 void sum()
 {
 	setTextColor(LCYAN);
@@ -384,6 +304,7 @@ void sum()
 	}	
 }
 
+//subtract A - B
 void subt1()
 {
 	setTextColor(LCYAN);
@@ -407,6 +328,7 @@ void subt1()
 	}
 }
 
+//subtract B - A
 void subt2()
 {
 	setTextColor(LCYAN);
@@ -429,6 +351,7 @@ void subt2()
 	}
 }
 
+//product A * B
 void prod1()
 {
 	setTextColor(LCYAN);
@@ -458,6 +381,7 @@ void prod1()
 	}
 }
 
+//product B * A
 void prod2()
 {
 	setTextColor(LCYAN);
@@ -487,6 +411,7 @@ void prod2()
 	}
 }
 
+//dot product trace(A * B^T)
 void dotProd()
 {
 	setTextColor(LCYAN);
