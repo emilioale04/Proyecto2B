@@ -39,7 +39,7 @@ int main()
 	system("cls");
 	cout.precision(3); //3 decimales
 	
-	load:
+	INGRESAR_MATRICES:
 	system("cls");
 	header();
 	initMatrix();
@@ -119,7 +119,7 @@ int main()
 
 			case REINPUT:
 				system("cls");
-				goto load;
+				goto INGRESAR_MATRICES;
 				break;
 
 			case EXIT:
