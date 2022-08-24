@@ -40,8 +40,7 @@ enum Options
 /*
 check int number
 @param str input string
-@return false if not number -
-@return true if number
+@return false if not number - true if number
 */
 bool validarInt(string str)
 {
@@ -52,10 +51,9 @@ bool validarInt(string str)
 }
 
 /*
-check number (+, -, .)
+check number number (+, -, .)
 @param str input string
-@return false if not number -
-@return true if number
+@return false if not number - true if number
 */
 bool validarNum(string str)
 {
