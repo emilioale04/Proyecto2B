@@ -14,6 +14,8 @@ Subject:	Proyecto 2B
 
 using namespace std;
 
+#define LIM 5 //max order 5x5
+
 void header();
 void headerMatrix();
 void initMatrix();
@@ -26,9 +28,7 @@ void prod1();
 void prod2();
 void dotProd();
 
-#define LIM 5 //max order 5x5
-
-int m1, m2, n1, n2;
+int m1, m2, n1, n2; //ordenes de las matrices
 
 float A[LIM][LIM];
 float B[LIM][LIM];
@@ -37,7 +37,7 @@ float C[LIM][LIM];
 int main()
 {
 	system("cls");
-	cout.precision(3); //3 decimals
+	cout.precision(3); //3 decimales
 	
 	load:
 	system("cls");
