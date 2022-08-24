@@ -1,6 +1,7 @@
 /*
 ---------------------------------------------
-Developer:	Armas Emilio
+Copyrigth derechos reservados 2022 - EPN
+Author:	Armas Emilio
 Date:		13/08/2022
 Subject:	Proyecto 2B
 			Calculadora de Matrices
