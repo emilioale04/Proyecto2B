@@ -160,15 +160,15 @@ int menu()
 	cout<<"\tOpcion: "; getline(cin, in);
 	fflush(stdin);
 
-	if(in != "" && validarInt(in))
+	if(in != "" && validarPosInt(in))
 		opt = stoi(in);
 
-	while(opt<0 || opt>REINPUT || !validarInt(in) || in == ""){
+	while(opt<0 || opt>REINPUT || !validarPosInt(in) || in == ""){
 		setTextColor(LRED);
 		cout<<"\tOpcion no valida, ingrese la opcion nuevamente"<<endl;
 		setTextColor(WHITE);
 		cout<<"\tOpcion: "; getline(cin, in);
-		if(in != "" && validarInt(in))
+		if(in != "" && validarPosInt(in))
 			opt = stoi(in);
 		fflush(stdin);
 	}

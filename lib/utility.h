@@ -38,11 +38,11 @@ enum Options
 };
 
 /*
-check int number
+check positive int number
 @param str input string
 @return false if not number - true if number
 */
-bool validarInt(string str)
+bool validarPosInt(string str)
 {
     for(int i = 0; i<str.length(); i++)
         if(isdigit(str[i]) == 0) 
@@ -152,15 +152,15 @@ gets a positive int
 int getPositiveInt(string tag, string val, int lim)
 {
 	int m;
-	if(val!="" && validarInt(val))
+	if(val!="" && validarPosInt(val))
 		m = stoi(val);
 
-	while(m < 1 || m > lim || !validarInt(val) || val == ""){
+	while(m < 1 || m > lim || !validarPosInt(val) || val == ""){
 		setTextColor(LRED);
 		cout<<"\tOpcion no valida, ingrese un numero valido nuevamente"<<endl;
 		setTextColor(WHITE);
 		cout<<"\t"<<tag; getline(cin, val);
-		if(val!="" && validarInt(val))
+		if(val!="" && validarPosInt(val))
 			m = stoi(val);
 		fflush(stdin);
 	}
