@@ -39,7 +39,7 @@ int main()
 	system("cls");
 	cout.precision(3); //3 decimales
 	
-	INGRESAR_MATRICES:
+	INGRESAR_MATRICES: //reingreso de matrices
 	system("cls");
 	header();
 	initMatrix();
