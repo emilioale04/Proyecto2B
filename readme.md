@@ -6,11 +6,9 @@ Incluye suma, resta y multiplicacion de matrices y producto interno usual.
 
 Proyecto del segundo bimestre.
 
-
-### Authors
+### By
 
 - Emilio Armas (emilio.armas@epn.edu.ec)
 
 ### GitHub
 [GitHub](https://github.com/emilioale04/Proyecto2B.git)
-
