@@ -268,7 +268,7 @@ void showMatrix(char name, float M[][LIM], int m, int n)
 	for (int i = 0; i<m; i++){ // muestra las m filas
 			for (int j = 0; j<n; j++) // muestra las n columnas
 			{
-				cout<<M[i][j]<<"\t\t"; // muestra el elemento en la posicion i j
+				cout<<M[i][j]<<"\t"; // muestra el elemento en la posicion i j
 			}
 			cout<<endl<<"\t\t";
 		}
