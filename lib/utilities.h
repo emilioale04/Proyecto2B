@@ -34,7 +34,6 @@ enum Options
     PROD1,
     PROD2,
     DOT_PROD,
-    POW,
     REINPUT     
 };
 
