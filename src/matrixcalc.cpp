@@ -8,7 +8,7 @@ Subject:	Proyecto 2B - Calculadora de Matrices
 */
 #include <iostream>
 #include <conio.h>
-#include "..\lib\utilities.h"
+#include "..\lib\utility.h"
 
 using namespace std;
 
