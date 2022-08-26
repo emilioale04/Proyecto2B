@@ -15,6 +15,14 @@ using namespace std;
 
 #define LIM 5 // max order 5x5
 
+// variables globales
+
+int mA, mB, nA, nB; // ordenes de las matrices
+
+float A[LIM][LIM];
+float B[LIM][LIM];
+float C[LIM][LIM];
+
 
 // declaracion de procedimientos y funciones
 
@@ -30,16 +38,6 @@ void subt2();
 void prod1();
 void prod2();
 void dotProd();
-
-
-// variables globales
-
-int mA, mB, nA, nB; // ordenes de las matrices
-
-float A[LIM][LIM];
-float B[LIM][LIM];
-float C[LIM][LIM];
-
 
 int main()
 {
@@ -202,7 +200,7 @@ void header()
 	cout<<"\t------------------------------------------------------------------"<<endl<<endl;
 }
 
-// muestra las matrices
+// muestra las matrices con las que se opera
 void headerMatrix()
 {
 	setTextColor(LCYAN);
