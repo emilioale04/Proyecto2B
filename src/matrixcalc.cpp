@@ -13,7 +13,7 @@ Subject:	Proyecto 2B
 
 using namespace std;
 
-#define LIM 5 //max order 5x5
+#define LIM 5 // max order 5x5
 
 
 // declaracion de procedimientos y funciones
@@ -32,9 +32,9 @@ void prod2();
 void dotProd();
 
 
-//variables globales
+// variables globales
 
-int mA, mB, nA, nB; //ordenes de las matrices
+int mA, mB, nA, nB; // ordenes de las matrices
 
 float A[LIM][LIM];
 float B[LIM][LIM];
@@ -44,9 +44,9 @@ float C[LIM][LIM];
 int main()
 {
 	system("cls");
-	cout.precision(3); //3 decimales
+	cout.precision(3); // 3 decimales
 	
-	INGRESAR_MATRICES: //reingreso de matrices
+	INGRESAR_MATRICES: // reingreso de matrices
 	nullMatrix(A);
 	nullMatrix(B);
 	nullMatrix(C);
@@ -59,7 +59,7 @@ int main()
 		system("cls");
 		header();
 		headerMatrix();
-		nullMatrix(C); //encera la matriz que guarda las respuestas
+		nullMatrix(C); // encera la matriz que guarda las respuestas
 		switch(menu())
 		{
 			case SUM:
@@ -186,7 +186,7 @@ int menu()
 	return opt;
 }
 
-//muestra instrucciones y nombre
+// muestra instrucciones y nombre
 void header()
 {
 	setTextColor(LBLUE);
@@ -202,7 +202,7 @@ void header()
 	cout<<"\t------------------------------------------------------------------"<<endl<<endl;
 }
 
-//muestra las matrices
+// muestra las matrices
 void headerMatrix()
 {
 	setTextColor(LCYAN);
@@ -215,7 +215,7 @@ void headerMatrix()
 
 }
 
-//inicializa matrices
+// inicializa matrices
 void initMatrix()
 {	
 	string input, rows,columns;
@@ -269,27 +269,27 @@ void showMatrix(char name, float M[][LIM], int m, int n)
 {
 	setTextColor(WHITE);
 	cout<<"\t"<<name<<"  = "<<'\t';
-	for (int i = 0; i<m; i++){ //muestra las m filas
-			for (int j = 0; j<n; j++) //muestra las n columnas
+	for (int i = 0; i<m; i++){ // muestra las m filas
+			for (int j = 0; j<n; j++) // muestra las n columnas
 			{
-				cout<<M[i][j]<<"\t\t"; //muestra el elemento en la posicion i j
+				cout<<M[i][j]<<"\t\t"; // muestra el elemento en la posicion i j
 			}
 			cout<<endl<<"\t\t";
 		}
 		cout<<endl;
 }
 
-//suma A + B
+// suma A + B
 void sum()
 {
 	setTextColor(LCYAN);
 	cout<<"\tSUMA DE MATRICES"<<endl<<endl;
 	setTextColor(WHITE);
-	if(mA == mB && nA == nB) //los ordenes de las dos matrices deben ser iguales
+	if(mA == mB && nA == nB) // los ordenes de las dos matrices deben ser iguales
 	{
-		for(int i = 0; i<mA; i++) //suma las m filas
-			for (int j = 0; j<nA; j++) //suma las n columnas
-				C[i][j] = A[i][j]+B[i][j]; //suma el elemento i j de cada matriz y lo asigna al elemento i j de la matriz C
+		for(int i = 0; i<mA; i++) // por cada fila
+			for (int j = 0; j<nA; j++) // por cada columna
+				C[i][j] = A[i][j]+B[i][j]; // suma el elemento i j de cada matriz y lo asigna al elemento i j de la matriz C
 
 		cout<<"\tLa suma de las matrices A y B es la matriz C de orden "<<mA<<"x"<<nA<<": "<<endl<<endl;
 		showMatrix('C',C, mA, nA);
@@ -302,17 +302,17 @@ void sum()
 	}	
 }
 
-//resta A - B
+// resta A - B
 void subt1()
 {
 	setTextColor(LCYAN);
 	cout<<"\tRESTA DE MATRICES"<<endl<<endl;
 	setTextColor(WHITE);
-	if(mA == mB && nA == nB)
+	if(mA == mB && nA == nB) // las matrices deben ser de igual orden
 	{
-		for(int i = 0; i<mA; i++)
-			for (int j = 0; j<nA; j++)
-				C[i][j] = A[i][j]-B[i][j];
+		for(int i = 0; i<mA; i++) // por cada fila
+			for (int j = 0; j<nA; j++) // por cada columna
+				C[i][j] = A[i][j]-B[i][j]; // resta el elemento i j de A y el elemento i j de B y lo guarda en i j de C
 
 		cout<<"\tLa resta de las matrices A y B es la matriz C de orden "<<mA<<"x"<<nA<<": "<<endl<<endl;
 		showMatrix('C',C,mA,nA);
@@ -325,13 +325,13 @@ void subt1()
 	}
 }
 
-//resta B - A
+// resta B - A
 void subt2()
 {
 	setTextColor(LCYAN);
 	cout<<"\tRESTA DE MATRICES"<<endl<<endl;
 	setTextColor(WHITE);
-	if(mA == mB && nA == nB)
+	if(mA == mB && nA == nB) 
 	{
 		for(int i = 0; i<mA; i++)
 			for (int j = 0; j<nA; j++)
@@ -347,21 +347,21 @@ void subt2()
 	}
 }
 
-//producto A * B
+// producto A * B
 void prod1()
 {
 	setTextColor(LCYAN);
 	cout<<"\tMULTIPLICACION DE MATRICES"<<endl<<endl;
 	setTextColor(WHITE);
-	if(nA == mB)
+	if(nA == mB)  // columnas de A iguales a filas de B
 	{
-		for(int i = 0; i<mA; i++)
-			for (int j = 0; j<nB; j++)
+		for(int i = 0; i<mA; i++)  // por cada fila de C (mismo # filas de A)
+			for (int j = 0; j<nB; j++) // por cada columna de C (mismo # columnas de B) 
 			{	
 				C[i][j] = 0;
 
-				for(int k = 0; k<nA; k++)
-					C[i][j] += A[i][k]*B[k][j];
+				for(int k = 0; k<nA; k++) // cada fila de A tiene nA/mB elementos y cada columna de B tiene nA/mB elementos
+					C[i][j] += A[i][k]*B[k][j];   // cada elemento i j de C es la suma de los productos de los elementos de la fila i de A y la columna j de B
 			}
 
 		cout<<"\tEl producto (A*B) de las matrices es la matriz C de orden "<<mA<<"x"<<nB<<": "<<endl<<endl;
@@ -376,7 +376,7 @@ void prod1()
 	}
 }
 
-//producto B * A
+// producto B * A
 void prod2()
 {
 	setTextColor(LCYAN);
@@ -405,25 +405,25 @@ void prod2()
 	}
 }
 
-//producto punto traza(A * B^T)
+// producto punto traza(A * B^T)
 void dotProd()
 {
 	setTextColor(LCYAN);
 	cout<<"\tPRODUCTO INTERNO USUAL DE MATRICES"<<endl<<endl;
 	setTextColor(WHITE);
-	if(mA == mB && nA == nB)
+	if(mA == mB && nA == nB) // deben tener mismo numero de filas y columnas para que resulte una matriz cuadrada (por la traza)
 	{
 		float trace = 0;
-		for(int i = 0; i<mA; i++)
+		for(int i = 0; i<mA; i++)  // por cada elemento de la diagonal
 		{	
 			C[i][i] = 0;
 
-			for(int k = 0; k<nA; k++)
-				C[i][i] += A[i][k]*B[i][k];
+			for(int k = 0; k<nA; k++)  // # elementos filas de A y columnas de la transpuesta de B
+				C[i][i] += A[i][k]*B[i][k];   // se toma elementos de la fila i de A y de la transpuesta de B
 		}
 
 		for(int i = 0; i<mA; i++)
-				trace += C[i][i];
+				trace += C[i][i]; // suma elementos de la diagonal
 
 		cout<<"\tEl producto interno usual de las matrices A y B es: "<<endl<<endl
 			<<"\t"<<trace<<endl<<endl;
@@ -442,7 +442,7 @@ iguala una matriz a la matriz nula
 */
 void nullMatrix(float M[][LIM])
 {
-	for(int i = 0; i < LIM; i++)
-		for(int j = 0; j < LIM; j++)
+	for(int i = 0; i < LIM; i++) // cada fila
+		for(int j = 0; j < LIM; j++) // cada columna
 			M[i][j] = 0;
 }
