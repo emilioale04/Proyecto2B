@@ -1,7 +1,6 @@
 /*
 ---------------------------------------------
-Copyright derechos reservados 2022 - EPN
-Author:	Armas Emilio
+Author:		Armas Emilio
 Date:		13/08/2022
 Subject:	Proyecto 2B
 			Calculadora de Matrices
@@ -10,7 +9,7 @@ Subject:	Proyecto 2B
 */
 #include <iostream>
 #include <conio.h>
-#include "..\lib\utility.h"
+#include "..\lib\utilities.h"
 
 using namespace std;
 
@@ -160,15 +159,15 @@ int menu()
 	cout<<"\tOpcion: "; getline(cin, in);
 	fflush(stdin);
 
-	if(in != "" && validarPosInt(in))
+	if(in != "" && checkPosInt(in))
 		opt = stoi(in);
 
-	while(opt<0 || opt>REINPUT || !validarPosInt(in) || in == ""){
+	while(opt<0 || opt>REINPUT || !checkPosInt(in) || in == ""){
 		setTextColor(LRED);
 		cout<<"\tOpcion no valida, ingrese la opcion nuevamente"<<endl;
 		setTextColor(WHITE);
 		cout<<"\tOpcion: "; getline(cin, in);
-		if(in != "" && validarPosInt(in))
+		if(in != "" && checkPosInt(in))
 			opt = stoi(in);
 		fflush(stdin);
 	}
