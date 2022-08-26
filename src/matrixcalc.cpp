@@ -51,7 +51,7 @@ int main()
 	header();
 	initMatrix();
 	
-	do
+	while(1)
 	{
 		system("cls");
 		header();
@@ -139,8 +139,7 @@ int main()
 				exit(EXIT_SUCCESS);
 				break;
 		}
-
-	}while (true);
+	}
 	
 	return 0;
 }
