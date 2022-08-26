@@ -90,20 +90,7 @@ bool checkNum(string str)
 }
 
 /*
-hides or shows the cursor in console
-@param cursor true or false
-*/
-void showcursor(bool cursor)
-{
-   HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-   CONSOLE_CURSOR_INFO info;
-   info.dwSize = 100;
-   info.bVisible = cursor;
-   SetConsoleCursorInfo(consoleHandle, &info);
-}
-
-/*
-changes text color in console 
+cambia el color del texto en consola
 @param Text int from 0 to 15
 */
 void setTextColor(int Text)

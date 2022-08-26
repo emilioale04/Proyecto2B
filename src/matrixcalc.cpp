@@ -138,8 +138,8 @@ int main()
 }
 
 /*
-shows options
-@return option
+muestra las opciones
+@return int option
 */
 int menu()
 {
@@ -175,6 +175,7 @@ int menu()
 	return opt;
 }
 
+//muestra instrucciones y nombre
 void header()
 {
 	setTextColor(LBLUE);
@@ -190,7 +191,7 @@ void header()
 	cout<<"\t------------------------------------------------------------------"<<endl<<endl;
 }
 
-//shows matrices
+//muestra las matrices
 void headerMatrix()
 {
 	setTextColor(LCYAN);
@@ -209,7 +210,7 @@ void headerMatrix()
 
 }
 
-//initialize matrices
+//inicializa matrices
 void initMatrix()
 {	
 	string input, rows,columns;
@@ -253,8 +254,8 @@ void initMatrix()
 }
 
 /*
-shows a matrix
-@param M matrix
+muestra una matriz
+@param M matriz
 @param m rows
 @param n columns
 */
@@ -271,7 +272,7 @@ void showMatrix(float M[][LIM], int m, int n)
 		cout<<endl;
 }
 
-//sum A + B
+//suma A + B
 void sum()
 {
 	setTextColor(LCYAN);
@@ -295,7 +296,7 @@ void sum()
 	}	
 }
 
-//subtract A - B
+//resta A - B
 void subt1()
 {
 	setTextColor(LCYAN);
@@ -319,7 +320,7 @@ void subt1()
 	}
 }
 
-//subtract B - A
+//resta B - A
 void subt2()
 {
 	setTextColor(LCYAN);
@@ -342,7 +343,7 @@ void subt2()
 	}
 }
 
-//product A * B
+//producto A * B
 void prod1()
 {
 	setTextColor(LCYAN);
@@ -372,7 +373,7 @@ void prod1()
 	}
 }
 
-//product B * A
+//producto B * A
 void prod2()
 {
 	setTextColor(LCYAN);
@@ -402,7 +403,7 @@ void prod2()
 	}
 }
 
-//dot product trace(A * B^T)
+//producto punto traza(A * B^T)
 void dotProd()
 {
 	setTextColor(LCYAN);
